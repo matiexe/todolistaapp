@@ -1,12 +1,15 @@
 import { useState } from "react";
 
 export const TaskCreator = ({ createNewTask }) => {
-  const [newTaskName, setNewTaskName] = useState(" ");
-
+  const [newTaskName, setNewTaskName] = useState("");
   const handleSubmit = (e) => {
+    if (newTaskName.trim() === "") {
+      alert("Ingrese el nombre de la tarea");
+      return;
+    }
     e.preventDefault();
     createNewTask(newTaskName);
-    setNewTaskName(" ");
+    setNewTaskName("");
   };
 
   return (

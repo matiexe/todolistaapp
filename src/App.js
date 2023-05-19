@@ -16,6 +16,7 @@ function App() {
     let data = localStorage.getItem("tarea");
     if (data) {
       setTaskItems(JSON.parse(data));
+      console.log("asds:", setTaskItems);
     }
   }, []);
 
@@ -31,11 +32,10 @@ function App() {
     }
   };
   //Funcion que cambia el estado del checkbox
-  const toogleTask = (task) => {
+  const toggleTask = (task) =>
     setTaskItems(
       taskItems.map((t) => (t.name === task.name ? { ...t, done: !t.done } : t))
     );
-  };
   //Funcion que elimina tareas
   const cleanTasks = () => {
     setTaskItems(taskItems.filter((task) => !task.done));
@@ -47,6 +47,7 @@ function App() {
     <main className="bg-dark vh-100 text-white">
       <Container>
         <TaskCreator createNewTask={createNewTask} />
+        <TaskTable tasks={taskItems} toggleTask={toggleTask} />
         <VisibilityControl
           description="Tareas Completadas"
           isChecked={showCompleted}
@@ -55,8 +56,8 @@ function App() {
         />
         {showCompleted && (
           <TaskTable
-            task={taskItems}
-            toogleTask={toogleTask}
+            tasks={taskItems}
+            toggleTask={toggleTask}
             showCompleted={showCompleted}
           />
         )}

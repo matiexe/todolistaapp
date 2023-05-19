@@ -1,4 +1,4 @@
-export const TaskRow = ({ task, toogleTask }) => {
+export const TaskRow = ({ task, toggleTask }) => {
   return (
     <tr key={task.name}>
       <td className="d-flex justify-content-between">
@@ -6,7 +6,7 @@ export const TaskRow = ({ task, toogleTask }) => {
         <input
           type="checkbox"
           checked={task.done}
-          onChange={() => toogleTask(task)}
+          onChange={() => toggleTask(task)}
         />
       </td>
     </tr>

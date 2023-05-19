@@ -22,7 +22,7 @@ export const VisibilityControl = ({
         <label htmlFor="form-check-label">Mostrar {description}</label>
       </div>
       <button className="btn btn-danger btn-sm" onClick={handleDelete}>
-        Clear
+        Limpiar
       </button>
     </div>
   );
